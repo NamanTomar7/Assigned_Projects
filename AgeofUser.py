@@ -1,9 +1,12 @@
-current_year=2024
-print("Current year:",current_year)
-user=int(input("Enter Your Birth Year: "))
+from datetime import datetime
 
-if user>current_year:
-    print("Your Birth year input is more than current year")
-else:
-    age=current_year-user
-    print("Your Age:", age)    
+user=input("Enter Your Birth YYYY-MM-DD: ")
+birth_date = datetime.strptime(user, "%Y-%m-%d")
+
+current_date = datetime.now()
+age = current_date.year - birth_date.year
+
+if (current_date.month, current_date.day) < (birth_date.month, birth_date.day):
+    age -= 1
+
+print(f"You are {age} years old.")
